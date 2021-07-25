@@ -1,0 +1,32 @@
+
+<div class="container mt-4">
+    <div class="col-md-8 offset-2">
+        <h3>{{person.rol_nombre}}</h3>
+        <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <Label class=""><strong>Nombre:</strong></Label><br>
+                {{person.per_name}}
+            </div>
+            <div class="col-md-4">
+                <Label class=""><strong>Telefono:</strong></Label><br>
+                {{person.per_phone}}
+            </div>
+            <div class="col-md-4">
+                <Label class=""><strong>Email:</strong></Label><br>
+                {{person.per_email}}
+            </div>
+            <hr class="mt-4">
+            <div class="col-md-12">
+                <Label class=""><strong>Dirección:</strong></Label><br>
+                {{person.address}}
+            </div>            
+        </div>
+        <hr>
+        <div class="text-center">
+            <button type="button" class="btn btn-success btn-lg m-2" (click)="goBack()">Volver</button>
+            <button class="btn btn-primary btn-lg m-1" (click)="GoEdit(person.per_id)">Editar</button>
+            <button class="btn btn-danger btn-lg" (click)="GoDelete(person.per_id)">Eliminar</button>
+        </div>
+    </div>
+</div>

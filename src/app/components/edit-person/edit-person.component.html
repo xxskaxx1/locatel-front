@@ -1,0 +1,90 @@
+<div class="container mt-3">
+  <div class="col-md-8 offset-2">
+    <h3>Editar Persona</h3>
+    <hr>
+    <form (ngSubmit)="EditPerson()" [formGroup]="formEditPerson">
+      <div class="row">
+        <div class="col-sm-6 mb-3">
+          <label for="per_name" class="form-label">Nombre:*</label>
+          <input type="text" class="form-control" id="per_name" formControlName="per_name" autocomplete="off">
+          <input type="text" class="form-control" id="per_id" formControlName="per_id" readonly hidden>
+          <div *ngIf="submit == 1">
+            <div class="validate" *ngIf="formEditPerson.get('per_name').hasError('required')">Debe ingresar un Nombre*</div>
+            <div class="validate" *ngIf="formEditPerson.get('per_name').hasError('maxlength')">límite de caracteres superado*</div>
+          </div>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <label for="per_phone" class="form-label">Telefono:*</label>
+          <input type="number" class="form-control" id="per_phone" formControlName="per_phone" autocomplete="off">
+          <div *ngIf="submit == 1">
+            <div class="validate" *ngIf="formEditPerson.get('per_phone').hasError('required')">Debe ingresar un Telefono*</div>
+            <div class="validate" *ngIf="formEditPerson.get('per_phone').hasError('max')">límite de caracteres superado*</div>
+          </div>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <label for="per_email" class="form-label">Email:*</label>
+          <input type="email" class="form-control" id="per_email" formControlName="per_email" autocomplete="off">
+          <div *ngIf="submit == 1">
+            <div class="validate" *ngIf="formEditPerson.get('per_email').hasError('required')">Debe ingresar un Email*</div>
+            <div class="validate" *ngIf="formEditPerson.get('per_email').hasError('email')">Debe ingresar un Email valido*</div>
+            <div class="validate" *ngIf="formEditPerson.get('per_name').hasError('maxlength')">límite de caracteres superado*</div>
+          </div>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <label for="per_rol" class="form-label">Rol:*</label>
+          <select class="form-control" id="per_rol" formControlName="per_rol" autocomplete="off">
+            <option *ngFor="let rol of rols" value="{{rol.rol_id}}">{{rol.rol_nombre}}</option>
+          </select>
+          <div *ngIf="submit == 1 && formEditPerson.get('per_rol').hasError('required')">
+            <div class="validate">Debe ingresar un Rol*</div>
+          </div>
+        </div>
+        <hr>
+        <div class="col-sm-6 mb-3">
+          <label for="add_street" class="form-label">Calle:*</label>
+          <input type="text" class="form-control" id="add_street" formControlName="add_street" autocomplete="off">
+          <div *ngIf="submit == 1">
+            <div class="validate" *ngIf="formEditPerson.get('add_street').hasError('required')">Debe ingresar una Calle*</div>
+            <div class="validate" *ngIf="formEditPerson.get('add_street').hasError('maxlength')">límite de caracteres superado*</div>
+          </div>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <label for="add_city" class="form-label">Ciudad:*</label>
+          <input type="text" class="form-control" id="add_city" formControlName="add_city" autocomplete="off">
+          <div *ngIf="submit == 1">
+            <div class="validate" *ngIf="formEditPerson.get('add_city').hasError('required')">Debe ingresar una Ciudad*</div>
+            <div class="validate" *ngIf="formEditPerson.get('add_city').hasError('maxlength')">límite de caracteres superado*</div>
+          </div>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <label for="add_state" class="form-label">Estado/Departamento:*</label>
+          <input type="text" class="form-control" id="add_state" formControlName="add_state" autocomplete="off">
+          <div *ngIf="submit == 1">
+            <div class="validate" *ngIf="formEditPerson.get('add_state').hasError('required')">Debe ingresar un Estado/Departamento*</div>
+            <div class="validate" *ngIf="formEditPerson.get('add_state').hasError('maxlength')">límite de caracteres superado*</div>
+          </div>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <label for="add_postal_code" class="form-label">Codigo postal:*</label>
+          <input type="number" class="form-control" id="add_postal_code" formControlName="add_postal_code" autocomplete="off">
+          <div *ngIf="submit == 1">
+            <div class="validate" *ngIf="formEditPerson.get('add_postal_code').hasError('required')">Debe ingresar un Codigo postal*</div>
+            <div class="validate" *ngIf="formEditPerson.get('add_postal_code').hasError('max')">límite de caracteres superado*</div>
+          </div>
+        </div>
+        <div class="col-sm-6 mb-3 offset-3">
+          <label for="add_country" class="form-label">Pais:*</label>
+          <input type="text" class="form-control" id="add_country" formControlName="add_country" autocomplete="off">
+          <div *ngIf="submit == 1">
+            <div class="validate" *ngIf="formEditPerson.get('add_country').hasError('required')">Debe ingresar un Pais*</div>
+            <div class="validate" *ngIf="formEditPerson.get('add_country').hasError('maxlength')">límite de caracteres superado*</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 text-center">
+        <button type="submit" class="btn btn-primary btn-lg" >Guardar</button>
+        <button type="button" class="btn btn-danger btn-lg m-2" (click)="goBack()">Volver</button>
+      </div>
+    </form>
+  </div>
+</div>
